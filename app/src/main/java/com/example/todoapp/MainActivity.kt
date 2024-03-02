@@ -55,4 +55,13 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
+
+    override fun onStop() {
+        super.onStop()
+        // Save tasks to SharedPreferences when the activity is stopped
+        val editor = sharedPreferences.edit()
+        editor.putStringSet("tasks", HashSet(tasksArray))
+        editor.apply()
+    }
 }
